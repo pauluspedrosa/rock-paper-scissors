@@ -29,3 +29,29 @@ function playRound(playerSelection, computerSelection) {
         return "It's a tie!";
     }
 }
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let playerChoice = prompt("Rock, Paper, or Scissors?");
+        let result = playRound(playerChoice, getComputerChoice());
+
+        console.log(result);
+
+        result = result.slice(0, 8);
+
+        if (result === "You win!") {
+            ++playerScore;
+        } else if (result === "You lose") {
+            ++computerScore;
+        } else {
+            --i;
+        }
+    }
+
+    return (playerScore > computerScore) ?
+            "Congrats! You're the winner!" :
+            "You lost the game.";
+}
